@@ -1,11 +1,11 @@
-var config = {}
+var config = {};
 
-// Update to have your correct username and password
+// Update to have your correct username, password, cluster name, and database name
 config.mongoURI = {
-    production: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/?retryWrites=true&w=majority&appName=bbkoome',
-    development: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/?retryWrites=true&w=majority&appName=bbkoome',
-    test: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/?retryWrites=true&w=majority&appName=bbkoome',
-}
+    production: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/bbkoome?retryWrites=true&w=majority',
+    development: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/bbkoome?retryWrites=true&w=majority',
+    test: 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/bbkoome?retryWrites=true&w=majority'
+};
 
 // Export the production MongoDB URI as an environment variable
 process.env.MONGODB_URI = config.mongoURI.production;
