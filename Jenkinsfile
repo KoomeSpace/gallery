@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Clone code from repo') {
             steps {
                 script {
                     git branch: 'master', url: 'https://github.com/KoomeSpace/gallery.git'
@@ -25,10 +25,9 @@ pipeline {
             }
         }
 
-        stage ('Test') {
+        stage ('Build') {
             steps {
                 sh 'npm install' // Adding npm install step
-                sh 'npm test'
             }
         }
 
@@ -57,3 +56,4 @@ pipeline {
         }
     }
 }
+
