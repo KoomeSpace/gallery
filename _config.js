@@ -1,41 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const path = require('path');
-const config = require('./_config');
+var config = {};
 
-// Define routes
-let index = require('./routes/index');
-let image = require('./routes/image');
+// Update to have your correct username, password, cluster name, and database name
+config.mongoURI = {
+    production: 'mongodb+srv://Brian:Koome8322@devops5.fvt2akw.mongodb.net/?retryWrites=true&w=majority&appName=Devops5',
+    development: 'mongodb+srv://Brian:Koome8322@devops5.fvt2akw.mongodb.net/?retryWrites=true&w=majority&appName=Devops5',
+    test: 'mongodb+srv://Brian:Koome8322@devops5.fvt2akw.mongodb.net/?retryWrites=true&w=majority&appName=Devops5'
+};
 
-// Initializing the app
-const app = express();
+// Export the production MongoDB URI as an environment variable
+process.env.MONGODB_URI = config.mongoURI.production;
 
-// Connecting to the database
-const mongodb_url = 'mongodb+srv://Brian:Koome8322@devops5.fvt2akw.mongodb.net/?retryWrites=true&w=majority&appName=Devops5';
-mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Database connected successfully');
-    })
-    .catch((err) => {
-        console.error('Database connection error:', err);
-    });
-
-// View Engine
-app.set('view engine', 'ejs');
-
-// Set up the public folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Body parser middleware
-app.use(express.json());
-
-// Routes
-app.use('/', index);
-app.use('/image', image);
-
-// Start the server
-const PORT = process.env.PORT || 5000; // Use the PORT environment variable if provided, otherwise use port 5000
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is listening on port ${PORT}`);
-});
+module.exports = config;
