@@ -12,7 +12,7 @@ let image = require('./routes/image');
 const app = express();
 
 // Connecting to the database
-const mongodb_url = 'mongodb+srv://bbkoome:##Koome8322@bbkoome.eunvprz.mongodb.net/bbkoome';
+const mongodb_url = 'mongodb+srv://Brian:Koome8322@devops5.fvt2akw.mongodb.net/?retryWrites=true&w=majority&appName=Devops5';
 mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Database connected successfully');
