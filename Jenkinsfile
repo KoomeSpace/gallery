@@ -24,13 +24,13 @@ pipeline {
                 sh 'echo "<h1>MILESTONE 2</h1>" >> ./views/index.ejs'
             }
         }
-
+            
         stage ('Build') {
             steps {
                 sh 'npm install' // Adding npm install step
             }
         }
-
+            //Checks the test branch for tests and runs them
         stage ('Test'){
             steps {
                 sh 'npm test'
