@@ -31,6 +31,12 @@ pipeline {
             }
         }
 
+        stage ('Test'){
+            steps {
+                sh 'npm test'
+            }
+        }
+
         stage('Update Landing Page 2') {
             steps {
                 // Make changes to the landing page
