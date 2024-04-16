@@ -46,7 +46,7 @@ pipeline {
 
         stage('Update Landing Page 3') {
             steps {
-                // Make changes to the landing page
+                // Make changes to the landing page and add milestone 4
                 sh 'echo "<h1>MILESTONE 4</h1>" >> ./views/index.ejs'
             }
             //Sends a notification to the slack channnel #brian_ip1
