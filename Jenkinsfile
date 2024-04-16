@@ -8,7 +8,7 @@ pipeline {
     tools {
         nodejs '21.7.3'
     }
-
+    //Gets code from the repository
     stages {
         stage('Clone code from repo') {
             steps {
@@ -17,26 +17,26 @@ pipeline {
                 }
             }
         }
-        
+        //Make a few changes to the home page
         stage('Make first change to landing page') {
             steps {
                 // Make changes to the landing page
                 sh 'echo "<h1>MILESTONE 2</h1>" >> ./views/index.ejs'
             }
         }
-            
+            //Build the code
         stage ('Build') {
             steps {
                 sh 'npm install' // Adding npm install step
             }
         }
-            //Checks the test branch for tests and runs them
+            //Checks the test branch for tests and executes them
         stage ('Test'){
             steps {
                 sh 'npm test'
             }
         }
-
+        //Additional changes to the landing page
         stage('Update Landing Page 2') {
             steps {
                 // Make changes to the landing page
@@ -49,6 +49,7 @@ pipeline {
                 // Make changes to the landing page
                 sh 'echo "<h1>MILESTONE 4</h1>" >> ./views/index.ejs'
             }
+            //Sends a notification to the slack channnel #brian_ip1
             post {
                 always {
                     echo 'Slack channel notification'
